@@ -1,0 +1,77 @@
+:root {
+  --jumbotron-padding-y: 3rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: 0.25rem;
+}
+
+.card-editable {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.card-editing {
+  background: #f1f1f1;
+}
+
+.card-inactive {
+  opacity: 0.5;
+}
+
+.mark-category::after,
+.mark-collection::after,
+.mark-department::after {
+  border-color: transparent;
+  border-style: solid;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+  border-width: 1.2rem;
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.mark-category::after {
+  border-right-color: #aa3939;
+  border-top-color: #aa3939;
+}
+
+.mark-collection::after {
+  border-right-color: #226666;
+  border-top-color: #226666;
+}
+
+.mark-department::after {
+  border-right-color: #7b9f35;
+  border-top-color: #7b9f35;
+}
