@@ -40,6 +40,20 @@ export default {
       return draft;
     }),
 
+  findClient: () => (state, actions) => {
+    const clientKey = new URL(document.location).searchParams.get("key");
+
+    if (clientKey) {
+      const clientName = core.clientKeys.get(clientKey.substring(0, 8));
+
+      if (clientName) {
+        actions.loadCatalog({ clientKey });
+
+        return { clientName };
+      }
+    }
+  },
+
   inputItemName: ({ item, name }) => state =>
     produce(state, draft => {
       const thisItem = draft.catalog.find(
@@ -73,10 +87,8 @@ export default {
       return draft;
     }),
 
-  loadCatalog: () => async (state, actions) => {
-    const { client } = state;
-
-    const catalog = await core.loadCatalog({ client });
+  loadCatalog: ({ clientKey }) => async (state, actions) => {
+    const catalog = await core.loadCatalog({ clientKey });
 
     actions.setCatalog({ catalog });
   },

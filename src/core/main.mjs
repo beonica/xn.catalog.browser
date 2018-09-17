@@ -1,7 +1,9 @@
 import config from "../config.mjs";
 
-export const loadCatalog = async ({ client }) => {
-  const response = await fetch(`${config.backend}${client}/catalog`, {
+export const clientKeys = new Map([["23ae4ed5", "Ocean Drop"]]);
+
+export const loadCatalog = async ({ clientKey }) => {
+  const response = await fetch(`${config.backend}${clientKey}/catalog`, {
     mode: "cors"
   });
 

@@ -1,6 +1,6 @@
 export default {
-  catalog: [],
-  client: "CLI0",
+  catalog: null,
+  clientName: "",
   filters: {
     name: "",
     type: ""
