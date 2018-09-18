@@ -1,0 +1,15 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 73px; /* Margin bottom by footer height */
+}
+
+.footer {
+  bottom: 0;
+  height: 73px;
+  position: absolute;
+  width: 100%;
+}

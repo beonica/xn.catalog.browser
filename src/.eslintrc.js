@@ -8,5 +8,9 @@ module.exports = {
     ecmaFeatures: { jsx: true },
     ecmaVersion: 9,
     sourceType: "module"
+  },
+  plugins: ["react"],
+  rules: {
+    "react/jsx-uses-vars": "error"
   }
 };
