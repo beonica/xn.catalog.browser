@@ -23,14 +23,14 @@ export const CatalogItems = () => state => (
     </div>
     <br />
     <div class="row">
-      {() => {
+      {(() => {
         if (state.catalog) {
           return presentCatalog({
             catalog: state.catalog,
             filters: state.filters
-          }).map(item => <Item item={item} />);
+          }).map(item => Item({ item }));
         }
-      }}
+      })()}
     </div>
   </div>
 );
