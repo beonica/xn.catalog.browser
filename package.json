@@ -5,6 +5,7 @@
   "scripts": {
     "build": "rm -r ./dist && parcel build ./src/index.html && cp ./Staticfile ./dist",
     "deploy": "npm run build && cd dist && cf push beon-app-catalog-browser-static-dev -m 64M -b https://github.com/cloudfoundry/staticfile-buildpack.git",
+    "development": "ftl & parcel ./src/index.html --open --port 12002",
     "start": "ftl & parcel ./src/index.html --open --port 12002"
   },
   "keywords": [],
