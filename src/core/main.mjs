@@ -16,9 +16,9 @@ export const loadCatalog = async ({ clientKey }) => {
   return catalog;
 };
 
-export const saveItem = async ({ client, item }) => {
+export const saveItem = async ({ clientKey, item }) => {
   const response = await fetch(
-    `${config.backend}${client}/catalog/${item._id}`,
+    `${config.backend}${clientKey}/catalog/${item._id}`,
     {
       body: JSON.stringify(item),
       headers: { "Content-Type": "application/json" },

@@ -49,7 +49,7 @@ export default {
       if (clientName) {
         actions.loadCatalog({ clientKey });
 
-        return { clientName };
+        return { clientKey, clientName };
       }
     }
   },
@@ -72,6 +72,17 @@ export default {
       );
 
       thisItem.kind = type;
+
+      return draft;
+    }),
+
+  inputItemPriority: ({ item, priority }) => state =>
+    produce(state, draft => {
+      const thisItem = draft.catalog.find(
+        eachItem => eachItem._id === item._id
+      );
+
+      thisItem.priority = priority;
 
       return draft;
     }),
@@ -107,7 +118,7 @@ export default {
     }),
 
   saveItem: ({ item }) => async (state, actions) => {
-    const { client } = state;
+    const { clientKey } = state;
 
     const itemToSave = produce(item, draft => {
       delete draft.editing;
@@ -116,7 +127,7 @@ export default {
     });
 
     const savedItem = await core.saveItem({
-      client,
+      clientKey,
       item: itemToSave
     });
 

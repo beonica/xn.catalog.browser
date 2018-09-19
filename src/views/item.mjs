@@ -35,6 +35,7 @@ export const Item = ({ item }) => (state, actions) => (
             changeItemStatus={actions.changeItemStatus}
             editItem={actions.editItem}
             inputItemName={actions.inputItemName}
+            inputItemPriority={actions.inputItemPriority}
             inputItemType={actions.inputItemType}
             item={item}
             saveItem={actions.saveItem}

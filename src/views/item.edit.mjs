@@ -5,6 +5,7 @@ export const ItemEdit = ({
   editItem,
   item,
   inputItemName,
+  inputItemPriority,
   inputItemType,
   saveItem
 }) => (
@@ -15,6 +16,7 @@ export const ItemEdit = ({
         class="form-control"
         id={`${item._id}.name`}
         oninput={event => inputItemName({ item, name: event.target.value })}
+        required
         type="text"
         value={item.name}
       />
@@ -25,6 +27,7 @@ export const ItemEdit = ({
         class="form-control"
         id={`${item._id}.type`}
         onchange={event => inputItemType({ item, type: event.target.value })}
+        required
       >
         <option selected={item.kind === "category"} value="category">
           category
@@ -36,6 +39,21 @@ export const ItemEdit = ({
           department
         </option>
       </select>
+    </div>
+    <div class="form-group">
+      <label for={`${item._id}.priority`}>Prioridade</label>
+      <input
+        class="form-control"
+        id={`${item._id}.priority`}
+        min="0"
+        oninput={event =>
+          inputItemPriority({ item, priority: event.target.value })
+        }
+        required
+        step="5"
+        type="number"
+        value={item.priority}
+      />
     </div>
     <div class="form-group form-check">
       <input
