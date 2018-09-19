@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "main": "./src/main.mjs",
   "scripts": {
-    "build": "rm -r ./dist && parcel build ./src/index.html && cp ./Staticfile ./dist",
+    "build": "npm run set-deploy-mode && rm -r ./dist && parcel build ./src/index.html && cp ./Staticfile ./dist",
     "deploy": "npm run build && cd dist && cf push beon-app-catalog-browser-static-dev -m 64M -b https://github.com/cloudfoundry/staticfile-buildpack.git",
-    "development": "ftl & parcel ./src/index.html --open --port 12002",
-    "start": "ftl & parcel ./src/index.html --open --port 12002"
+    "development": "npm run unset-deploy-mode && ftl & parcel ./src/index.html --open --port 12002",
+    "set-deploy-mode": "sed -i \"1s/.*/const mode = 1;/\" src/config.mjs",
+    "start": "ftl & parcel ./src/index.html --open --port 12002",
+    "unset-deploy-mode": "sed -i \"1s/.*/const mode = 0;/\" src/config.mjs"
   },
   "keywords": [],
   "author": "Thiago F",
